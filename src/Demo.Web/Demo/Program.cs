@@ -32,6 +32,10 @@ try
     });
     #endregion
 
+    #region #region Service Colleciton Dependency Injection Configuration with single class and single/multiple interfaces
+    builder.Services.AddScoped<IItem, Item>();
+    #endregion 
+
     #region Service Colleciton Dependency Injection Configuration with multiple class
     builder.Services.AddKeyedScoped<IProduct, Product1>("Product1");
     builder.Services.AddKeyedScoped<IProduct, Product2>("Product2");
