@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq", "Linq\Linq.csproj", "{CC9C64A2-2093-48AB-B42E-004AEF156C6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OODPrinciples", "OODPrinciples\OODPrinciples.csproj", "{B7266FDE-E17D-4CBE-95DA-55C182EBE508}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreationalPattern", "CreationalPattern\CreationalPattern.csproj", "{A82537EC-CFC3-48D5-8C31-B748D64ABD48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{CC9C64A2-2093-48AB-B42E-004AEF156C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC9C64A2-2093-48AB-B42E-004AEF156C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC9C64A2-2093-48AB-B42E-004AEF156C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7266FDE-E17D-4CBE-95DA-55C182EBE508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7266FDE-E17D-4CBE-95DA-55C182EBE508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7266FDE-E17D-4CBE-95DA-55C182EBE508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7266FDE-E17D-4CBE-95DA-55C182EBE508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82537EC-CFC3-48D5-8C31-B748D64ABD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82537EC-CFC3-48D5-8C31-B748D64ABD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82537EC-CFC3-48D5-8C31-B748D64ABD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82537EC-CFC3-48D5-8C31-B748D64ABD48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
