@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Authors";
+}
+@section Styles {
+    <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+}
+<!--begin::App Content Header-->
+<div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-sm-6"><h3 class="mb-0">Authors</h3></div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Authors</li>
+                </ol>
+            </div>
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+<!--begin::App Content-->
+<div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Availabe Authors</h3></div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="authors" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::App Content-->
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+     <script> 
+         $(function() {
+            $("#authors").DataTable({
+                processing: true, 
+                 serverSide: true, 
+                 responsive:true, 
+                 lengthChange: true, 
+                 autoWidth: false, 
+                 lengthMenu: [ 
+                     [10, 25, 50, -1], 
+                     [10, 25, 50, 'All'] 
+                 ], 
+                 ajax:{ 
+                     url: "/Admin/Authors/GetAuthorJsonData", 
+                     type: "POST",
+                    contentType: "application/json", // must be added
+                   datatype: "json" // better to add, not mandatory
+                }, 
+                 columnDfs:[ 
+                     { 
+                         ordarable: false, 
+                         targets: 1, 
+                         render: function(data, type, row){ 
+                             return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/author/update/${data}'" value='${data}'> 
+                                     <i class="fas fa-pencil-alt"> 
+                                     </i> 
+                                     Edit 
+                                 </button> 
+                                 <button type="submit" class="btn btn-danger btn-sm show-bs-modal" data-id='${data}' value='${data}'> 
+                                     <i class="fas fa-trash"> 
+                                     </i> 
+                                     Delete 
+                                 </button>`; 
+
+                         } 
+                     } 
+                 ] 
+               }); 
+               }); 
+     </script> 
+}
