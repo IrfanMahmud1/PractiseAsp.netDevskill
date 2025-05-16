@@ -1,6 +1,6 @@
-﻿@model AddAuthorModel
+﻿@model UpdateAuthorModel
 @{
-    ViewData["Title"] = "Add Author";
+    ViewData["Title"] = "Update Author";
 }
 
 <!--begin::App Content Header-->
@@ -9,11 +9,11 @@
     <div class="container-fluid">
         <!--begin::Row-->
         <div class="row">
-            <div class="col-sm-6"><h3 class="mb-0">Add Author</h3></div>
+            <div class="col-sm-6"><h3 class="mb-0">Update Author</h3></div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Author</li>
+                    <li class="breadcrumb-item active" aria-current="page">Update Author</li>
                 </ol>
             </div>
         </div>
@@ -38,13 +38,14 @@
                 <!--begin::Quick Example-->
                 <div class="card card-primary card-outline mb-4">
                     <!--begin::Header-->
-                    <div class="card-header"><div class="card-title">Add a Author</div></div>
+                    <div class="card-header"><div class="card-title">Update a Author</div></div>
                     <!--end::Header-->
                     <!--begin::Form-->
-                    <form asp-antiforgery="true" asp-area="Admin" asp-controller="Authors" asp-action="Add" method="post">
+                    <form asp-antiforgery="true" asp-area="Admin" asp-controller="Authors" asp-action="Update" method="post">
                         <!--begin::Body-->
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="card-body">
+                            <input type="hidden" asp-for="Id"/>
                             <div class="mb-3">
                                 <label asp-for="Name" class="form-label">Author Name</label>
                                 <input type="text"

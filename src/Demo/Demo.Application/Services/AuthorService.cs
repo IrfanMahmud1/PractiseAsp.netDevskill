@@ -1,4 +1,7 @@
-﻿using Demo.Domain.Entities;
+﻿using Demo.Application.Exceptions;
+using Demo.Domain;
+using Demo.Domain.Dtos;
+using Demo.Domain.Entities;
 using Demo.Domain.Services;
 using System;
 using System.Collections.Generic;
@@ -18,7 +21,42 @@ namespace Demo.Application.Services
 
         public void AddAuthor(Author author)
         {
+            if(_applicationUnitOfWork.AuthorRepository.IsNameDuplicate(author.Name))
+            {
+                throw new DuplicateNameException();
+            }
             _applicationUnitOfWork.AuthorRepository.Add(author);
+            _applicationUnitOfWork.Save();
+        }
+
+        public void DeleteAuthor(Guid id)
+        {
+            _applicationUnitOfWork.AuthorRepository.Remove(id);
+            _applicationUnitOfWork.Save();
+        }
+
+        public object GetAuthor(Guid id)
+        {
+            return _applicationUnitOfWork.AuthorRepository.GetById(id);
+        }
+
+        public (IList<Author> data, int total, int totalDisplay) GetAuthors(int pageIndex, int pageSize, string? order, DataTablesSearch search)
+        {
+            return _applicationUnitOfWork.AuthorRepository.GetPagedResult(pageIndex, pageSize, order, search);
+        }
+
+        public async Task<(IList<Author> data, int total, int totalDisplay)> GetAuthorsSPAsync(int pageIndex, int pageSize, string? order, AuthorSearchDto search)
+        {
+            return await _applicationUnitOfWork.GetAuthorsSPAsync(pageIndex, pageSize, order, search);
+        }
+
+        public void UpdateAuthor(Author author)
+        {
+            if (_applicationUnitOfWork.AuthorRepository.IsNameDuplicate(author.Name,author.Id))
+            {
+                throw new DuplicateNameException();
+            }
+            _applicationUnitOfWork.AuthorRepository.Update(author);
             _applicationUnitOfWork.Save();
         }
     }

@@ -25,6 +25,7 @@ namespace Demo.Domain.Repositories
         void Remove(Expression<Func<TEntity, bool>> filter);
         void Remove(TEntity entityToDelete);
         void Remove(TKey id);
+        void Update(TEntity enitityToUpdate);
         Task RemoveAsync(Expression<Func<TEntity, bool>> filter);
         Task RemoveAsync(TEntity entityToDelete);
         Task RemoveAsync(TKey id);

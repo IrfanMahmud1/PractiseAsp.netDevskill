@@ -300,7 +300,10 @@ namespace Demo.Infrastructure.Repositories
         {
             _dbSet.RemoveRange(_dbSet.Where(filter));
         }
-
+        public virtual void Update(TEntity enitityToUpdate)
+        {
+            _dbSet.Update(enitityToUpdate);
+        }
         public virtual void Edit(TEntity entityToUpdate)
         {
             if (!_dbSet.Local.Any(x => x == entityToUpdate))

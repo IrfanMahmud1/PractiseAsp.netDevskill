@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Domain.Entities
+namespace Demo.Domain.Dtos
 {
-    public class Author : IEntity<Guid>
+    public class AuthorSearchDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Biography { get; set; }
-        public double Rating { get; set; }
+        public int? RatingFrom { get; set; }
+        public int? RatingTo { get; set; }
     }
 }

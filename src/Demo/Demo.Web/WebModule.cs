@@ -2,6 +2,7 @@
 using Demo.Application;
 using Demo.Application.Services;
 using Demo.Data;
+using Demo.Domain;
 using Demo.Domain.Repositories;
 using Demo.Domain.Services;
 using Demo.Infrastructure;
