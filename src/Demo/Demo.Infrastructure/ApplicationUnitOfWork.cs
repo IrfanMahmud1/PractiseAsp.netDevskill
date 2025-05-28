@@ -1,5 +1,4 @@
-﻿using Demo.Application;
-using Demo.Domain;
+﻿using Demo.Domain;
 using Demo.Domain.Dtos;
 using Demo.Domain.Entities;
 using Demo.Domain.Repositories;

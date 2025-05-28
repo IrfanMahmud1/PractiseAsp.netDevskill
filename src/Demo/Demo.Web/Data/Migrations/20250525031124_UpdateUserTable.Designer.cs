@@ -4,6 +4,7 @@ using Demo.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250525031124_UpdateUserTable")]
+    partial class UpdateUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,29 +94,6 @@ namespace Demo.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("9019ba25-b384-49b4-b855-b88483b53a53"),
-                            ConcurrencyStamp = "5/26/2025 1:02:03 AM",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = new Guid("496d4fef-42d6-48ca-b88c-922c34d653c5"),
-                            ConcurrencyStamp = "5/26/2025 1:02:04 AM",
-                            Name = "HR",
-                            NormalizedName = "HR"
-                        },
-                        new
-                        {
-                            Id = new Guid("933c72c6-10e8-4d68-9e3c-7063bac3b58c"),
-                            ConcurrencyStamp = "5/26/2025 1:02:05 AM",
-                            Name = "Author",
-                            NormalizedName = "AUTHOR"
-                        });
                 });
 
             modelBuilder.Entity("Demo.Infrastructure.Identity.ApplicationRoleClaim", b =>

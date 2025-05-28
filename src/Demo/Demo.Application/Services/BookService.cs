@@ -1,4 +1,5 @@
-﻿using Demo.Domain.Entities;
+﻿using Demo.Domain;
+using Demo.Domain.Entities;
 using Demo.Domain.Services;
 using System;
 using System.Collections.Generic;

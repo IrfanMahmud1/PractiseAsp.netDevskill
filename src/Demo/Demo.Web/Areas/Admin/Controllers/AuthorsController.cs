@@ -10,10 +10,11 @@ using AutoMapper;
 using Demo.Infrastructure;
 using DuplicateNameException = Demo.Application.Exceptions.DuplicateNameException;
 using Demo.Domain.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Demo.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize(Roles = "Admin,HR")]
     public class AuthorsController(ILogger<AuthorsController> logger,IAuthorService authorService, IMapper mapper) : Controller
     {
         private readonly IAuthorService _authorService = authorService;
@@ -159,8 +160,7 @@ namespace Demo.Web.Areas.Admin.Controllers
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex, "Error in GetAuthorJsonData: {Message}", ex.Message);
-                _logger.LogError("Error in GetAuthorJsonData: {StackTrace}", ex.StackTrace);
+                _logger.LogError("Error in getting authors");
                 return Json(DataTables.EmptyResult);
             }
             

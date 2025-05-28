@@ -4,6 +4,7 @@ using Demo;
 using Demo.Application.Features.Books.Commands;
 using Demo.Data;
 using Demo.Infrastructure;
+using Demo.Infrastructure.Extensions;
 using Demo.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.FlowAnalysis;
@@ -67,6 +68,11 @@ try
     #region Docker IP correction
     builder.WebHost.UseUrls("http://*:80");
     #endregion
+
+    #region Identity configuration
+    builder.Services.AddIdentity();
+    #endregion
+
     #region Automapper Configuration
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     #endregion
@@ -75,8 +81,7 @@ try
         options.UseSqlServer(connectionString, (x) => x.MigrationsAssembly(migrationAssembly)));
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-    builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        .AddEntityFrameworkStores<ApplicationDbContext>();
+    builder.Services.AddRazorPages();
     builder.Services.AddControllersWithViews();
 
     var app = builder.Build();

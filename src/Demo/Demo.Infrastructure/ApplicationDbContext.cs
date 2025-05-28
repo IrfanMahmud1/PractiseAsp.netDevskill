@@ -1,13 +1,22 @@
 ﻿using Demo.Domain.Entities;
+using Demo.Infrastructure.Identity;
+using Demo.Infrastructure.Seeds;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Infrastructure
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser,
+        ApplicationRole, Guid,
+        ApplicationUserClaim, ApplicationUserRole,
+        ApplicationUserLogin, ApplicationRoleClaim,
+        ApplicationUserToken>
     {
         private readonly string _connectionString;
         private readonly string _migrationAssembly;
+
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
         public ApplicationDbContext(string connectionString, string migrationAssembly)
         {
             _connectionString = connectionString;
@@ -22,7 +31,12 @@ namespace Demo.Infrastructure
             }
             base.OnConfiguring(optionsBuilder);
         }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Author> Authors { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<ApplicationRole>().HasData(RoleSeed.GetRoles());
+            base.OnModelCreating(builder);
+        }
+
     }
 }
