@@ -57,7 +57,7 @@ namespace Demo.Web.Controllers
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 var result = await _userManager.CreateAsync(user, model.Password);
-                await _userManager.AddToRoleAsync(user, "Äuthor");
+                await _userManager.AddToRoleAsync(user, "Author");
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
