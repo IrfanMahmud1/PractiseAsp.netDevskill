@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Demo;
 using Demo.Application.Features.Books.Commands;
 using Demo.Data;
+using Demo.Domain;
 using Demo.Infrastructure;
 using Demo.Infrastructure.Extensions;
 using Demo.Web.Models;
@@ -84,6 +85,7 @@ try
     builder.Services.AddRazorPages();
     builder.Services.AddControllersWithViews();
 
+    builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.

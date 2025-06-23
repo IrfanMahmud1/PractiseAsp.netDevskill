@@ -5,8 +5,10 @@ using Demo.Data;
 using Demo.Domain;
 using Demo.Domain.Repositories;
 using Demo.Domain.Services;
+using Demo.Domain.Utilities;
 using Demo.Infrastructure;
 using Demo.Infrastructure.Repositories;
+using Demo.Infrastructure.Utilities;
 using Demo.Web.Models;
 
 namespace Demo
@@ -37,6 +39,8 @@ namespace Demo
                .InstancePerLifetimeScope();
             builder.RegisterType<AuthorService>().As<IAuthorService>()
              .InstancePerLifetimeScope();
+            builder.RegisterType<EmailUtility>().As<IEmailUtility>()
+            .InstancePerLifetimeScope();
             base.Load(builder);
         }
     }
