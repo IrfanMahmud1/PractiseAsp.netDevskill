@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Demo.Infrastructure.Identity.Requirements;
 
 namespace Demo.Infrastructure.Extensions
 {
@@ -59,7 +60,12 @@ namespace Demo.Infrastructure.Extensions
                 {
                     policy.RequireClaim("create_user","allowed");
                 });
+                options.AddPolicy("AgeRestriction", policy =>
+                {
+                    policy.AddRequirements(new AgeRequirement());
+                });
             });
+            services.AddSingleton<IAuthorizationHandler, AgeRequirementHandler>();
         }
     }
 }

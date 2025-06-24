@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Demo.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Web.Controllers
@@ -25,6 +26,12 @@ namespace Demo.Web.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "AgeRestriction")]
+        public IActionResult TestAge()
         {
             return View();
         }
